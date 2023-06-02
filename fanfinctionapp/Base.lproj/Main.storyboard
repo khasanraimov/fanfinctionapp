@@ -840,24 +840,28 @@
                                 <rect key="frame" x="16" y="321" width="343" height="297"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="jjP-Kw-AN3">
-                                    <size key="itemSize" width="122" height="149"/>
+                                    <size key="itemSize" width="72" height="96"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="HJY-CL-qfd">
-                                        <rect key="frame" x="0.0" y="0.0" width="122" height="149"/>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="ProfileCollectionViewCell" id="HJY-CL-qfd" customClass="ProfileCollectionViewCell" customModule="fanfinctionapp" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="72" height="96"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="122" height="149"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="72" height="96"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Lli-Nq-iK2">
-                                                    <rect key="frame" x="0.0" y="0.0" width="122" height="110"/>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="createPicture" translatesAutoresizingMaskIntoConstraints="NO" id="Lli-Nq-iK2">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="61"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="50" id="B0A-8I-etx"/>
+                                                        <constraint firstAttribute="height" constant="61" id="Llu-Lv-WcZ"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-pk-eeC">
-                                                    <rect key="frame" x="0.0" y="110" width="122" height="39"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Название" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9b-pk-eeC">
+                                                    <rect key="frame" x="0.0" y="66" width="72" height="14.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -865,15 +869,18 @@
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="Lli-Nq-iK2" secondAttribute="trailing" id="3m4-5i-BnT"/>
-                                            <constraint firstItem="Lli-Nq-iK2" firstAttribute="top" secondItem="HJY-CL-qfd" secondAttribute="top" id="5cl-Du-z12"/>
-                                            <constraint firstAttribute="bottom" secondItem="l9b-pk-eeC" secondAttribute="bottom" id="MmJ-U6-SVZ"/>
+                                            <constraint firstItem="Lli-Nq-iK2" firstAttribute="leading" secondItem="HJY-CL-qfd" secondAttribute="leading" id="Cbx-cM-xHh"/>
+                                            <constraint firstItem="l9b-pk-eeC" firstAttribute="leading" secondItem="HJY-CL-qfd" secondAttribute="leading" id="HN5-dp-kiD"/>
+                                            <constraint firstItem="Lli-Nq-iK2" firstAttribute="top" secondItem="HJY-CL-qfd" secondAttribute="top" id="Mxl-Wj-D08"/>
                                             <constraint firstItem="l9b-pk-eeC" firstAttribute="leading" secondItem="HJY-CL-qfd" secondAttribute="leading" id="Rly-cR-TuH"/>
-                                            <constraint firstItem="l9b-pk-eeC" firstAttribute="top" secondItem="Lli-Nq-iK2" secondAttribute="bottom" id="T9Z-e5-TD5"/>
-                                            <constraint firstItem="Lli-Nq-iK2" firstAttribute="leading" secondItem="HJY-CL-qfd" secondAttribute="leading" id="ckW-rX-WfW"/>
-                                            <constraint firstAttribute="bottom" secondItem="Lli-Nq-iK2" secondAttribute="bottom" constant="39" id="eeL-9Y-J3f"/>
+                                            <constraint firstAttribute="trailing" secondItem="l9b-pk-eeC" secondAttribute="trailing" id="YUa-4l-Emf"/>
+                                            <constraint firstItem="l9b-pk-eeC" firstAttribute="top" secondItem="Lli-Nq-iK2" secondAttribute="bottom" constant="5" id="g9v-s3-sIC"/>
                                             <constraint firstAttribute="trailing" secondItem="l9b-pk-eeC" secondAttribute="trailing" id="mrp-MQ-Lng"/>
                                         </constraints>
+                                        <connections>
+                                            <outlet property="fanficImageView" destination="Lli-Nq-iK2" id="bmC-IA-QR4"/>
+                                            <outlet property="titleLabel" destination="l9b-pk-eeC" id="aga-Iu-Amj"/>
+                                        </connections>
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
@@ -904,16 +911,14 @@
                         <color key="badgeColor" name="systemOrangeColor" catalog="System" colorSpace="catalog"/>
                     </tabBarItem>
                     <connections>
-                        <outlet property="countFollowers" destination="26U-ro-Dq9" id="hIR-9N-pUu"/>
-                        <outlet property="fanficsCollection" destination="aZy-nA-dOu" id="Xb2-Y7-pE9"/>
-                        <outlet property="followersLabel" destination="tCl-Ue-5C0" id="4Ko-LQ-c2d"/>
-                        <outlet property="profileImage" destination="7tG-C7-xx9" id="bN7-4R-x69"/>
-                        <outlet property="yourFanficsLabel" destination="de8-XV-5v5" id="tOK-JH-Ml8"/>
+                        <outlet property="avatarImageView" destination="7tG-C7-xx9" id="AEc-fM-emh"/>
+                        <outlet property="fanficCollectionView" destination="aZy-nA-dOu" id="ilI-cd-Nuh"/>
+                        <segue destination="L6O-3V-2vo" kind="show" identifier="FanficDetailViewController" id="ayg-NC-yYT"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4hF-TF-zds" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1601" y="1614"/>
+            <point key="canvasLocation" x="1600.8" y="1613.3433283358322"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="efg-HZ-fNl">
@@ -951,6 +956,6 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Zej-M9-emJ"/>
-        <segue reference="3gQ-zy-JnG"/>
+        <segue reference="ayg-NC-yYT"/>
     </inferredMetricsTieBreakers>
 </document>
