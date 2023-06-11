@@ -113,3 +113,4 @@ class RegViewController: UIViewController {
         return emailPredicate.evaluate(with: email)
     }
 }
+
