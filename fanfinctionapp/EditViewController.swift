@@ -112,7 +112,7 @@ class EditViewController: UIViewController {
             showAlert(withTitle: "Ошибка", message: "Выберите обложку фанфика")
             return
         }
-        guard let fanficCategory = fanficCategory else {
+        guard fanficCategory != nil else {
             showAlert(withTitle: "Ошибка", message: "Выберите категорию фанфика")
             return
         }

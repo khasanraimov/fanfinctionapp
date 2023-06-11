@@ -143,26 +143,18 @@
 import UIKit
 import Firebase
 import FirebaseStorage
-
 class CreatingViewController: UIViewController {
-    
     @IBOutlet weak var fanficTitleTextField: UITextField!
     @IBOutlet weak var descriptionFanfic: UITextField!
     @IBOutlet weak var contentFanfic: UITextView!
     @IBOutlet weak var imageFanfic: UIImageView!
     @IBOutlet weak var categoryButton: UIButton!
     @IBOutlet weak var saveAndPublish: UIButton!
-    @IBOutlet weak var chatAI: UIButton!
-    
-
-    
     var fanficImage: UIImage?
     var fanficImageURL: String?
     var categories = ["Фантастика", "Фэнтези", "Романтика", "Драма"]
     var fanficCategory: String?
     var fanfic: Fanfic?
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         fanficTitleTextField.delegate = self
@@ -265,6 +257,7 @@ class CreatingViewController: UIViewController {
         fanficRef.child("author").setValue(Auth.auth().currentUser?.uid ?? "")
         fanficRef.child("content").setValue(contentFanfic.text)
         fanficRef.child("category").setValue(fanficCategory)
+        fanficRef.child("likeCount").setValue(0)
 
         let storageRef = Storage.storage(url: "gs://fanfiction-4f149.appspot.com").reference().child("fanfic_images/\(fanficRef.key!)")
 
@@ -316,6 +309,7 @@ extension CreatingViewController: UIImagePickerControllerDelegate, UINavigationC
 }
 
 struct Fanfic: Decodable {
+    
     var key: String?
     var title: String?
     var description: String?
@@ -323,6 +317,29 @@ struct Fanfic: Decodable {
     var author: String?
     var text: String?
     var category: String?
+    var likesCount: Int
+    var commentsCount: Int
+    var repostCount: Int
+    var rating: Double
+    var authorName: String?
+    var likedBy: [String]
+    
+    init?(data: [String:Any]?) {
+        guard let data = data else { return nil }
+        key = data["key"] as? String
+        title = data["title"] as? String
+        description = data["description"] as? String
+        imageURL = data["imageURL"] as? String
+        author = data["author"] as? String
+        text = data["text"] as? String
+        category = data["category"] as? String
+        likesCount = data["likes_count"] as? Int ?? 0
+        commentsCount = data["comments_count"] as? Int ?? 0
+        repostCount = data["repost_count"] as? Int ?? 0
+        rating = data["rating"] as? Double ?? 0.0
+        authorName = data["authorName"] as? String
+        likedBy = data["likedBy"] as? [String] ?? []
+    }
     
     enum CodingKeys: String, CodingKey {
         case key
@@ -332,26 +349,62 @@ struct Fanfic: Decodable {
         case author
         case text
         case category
+        case likesCount = "likes_count"
+        case commentsCount = "comments_count"
+        case repostCount = "repost_count"
+        case rating
+        case authorName
+        case likedBy
+    }
+    
+    init(dict: [String: Any]) {
+        key = dict["key"] as? String
+        title = dict["title"] as? String
+        description = dict["description"] as? String
+        imageURL = dict["image_url"] as? String
+        author = dict["author"] as? String
+        text = dict["text"] as? String
+        category = dict["category"] as? String
+        likesCount = dict["likes_count"] as? Int ?? 0
+        commentsCount = dict["comments_count"] as? Int ?? 0
+        repostCount = dict["repost_count"] as? Int ?? 0
+        rating = dict["rating"] as? Double ?? 0.0
+        authorName = dict["author_name"] as? String
+        likedBy = dict["liked_by"] as? [String] ?? []
     }
     
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        key = try container.decodeIfPresent(String.self, forKey: .key)
         title = try container.decodeIfPresent(String.self, forKey: .title)
         description = try container.decodeIfPresent(String.self, forKey: .description)
         imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
         author = try container.decodeIfPresent(String.self, forKey: .author)
         text = try container.decodeIfPresent(String.self, forKey: .text)
         category = try container.decodeIfPresent(String.self, forKey: .category)
+        likesCount = try container.decode(Int.self, forKey: .likesCount)
+        commentsCount = try container.decode(Int.self, forKey: .commentsCount)
+        repostCount = try container.decode(Int.self, forKey: .repostCount)
+        rating = try container.decode(Double.self, forKey: .rating)
+        authorName = try container.decode(String.self, forKey: .authorName)
+        likedBy = try container.decodeIfPresent([String].self, forKey: .likedBy) ?? []
     }
     
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encodeIfPresent(key, forKey: .key)
         try container.encodeIfPresent(title, forKey: .title)
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
         try container.encodeIfPresent(author, forKey: .author)
         try container.encodeIfPresent(text, forKey: .text)
         try container.encodeIfPresent(category, forKey: .category)
+        try container.encode(likesCount, forKey: .likesCount)
+        try container.encode(commentsCount, forKey: .commentsCount)
+        try container.encode(repostCount, forKey: .repostCount)
+        try container.encode(rating, forKey: .rating)
+        try container.encodeIfPresent(key, forKey: .authorName)
+        try container.encode(likedBy, forKey: .likedBy)
     }
     
     init?(snapshot: DataSnapshot) {
@@ -365,12 +418,34 @@ struct Fanfic: Decodable {
         author = fanficDict["author"] as? String
         text = fanficDict["text"] as? String
         category = fanficDict["category"] as? String
+        likesCount = fanficDict["likes_count"] as? Int ?? 0
+        commentsCount = fanficDict["comments_count"] as? Int ?? 0
+        repostCount = fanficDict["repost_count"] as? Int ?? 0
+        rating = fanficDict["rating"] as? Double ?? 0.0
+        authorName = fanficDict["authorName"] as? String
+        likedBy = fanficDict["likedBy"] as? [String] ?? []
+    
+    }
+    
+    mutating func like(byUser userID: String) {
+        if !likedBy.contains(userID) {
+            likedBy.append(userID)
+            likesCount += 1
+        }
+    }
+    
+    mutating func unlike(byUser userID: String) {
+        if let index = likedBy.firstIndex(of: userID) {
+            likedBy.remove(at: index)
+            likesCount -= 1
+        }
     }
 }
 
 extension Fanfic: Equatable {
+    
     static func == (lhs: Fanfic, rhs: Fanfic) -> Bool {
-        return lhs.title == rhs.title && lhs.description == rhs.description && lhs.imageURL == rhs.imageURL && lhs.author == rhs.author && lhs.text == rhs.text && lhs.category == rhs.category
+        return lhs.title == rhs.title && lhs.description == rhs.description && lhs.imageURL == rhs.imageURL && lhs.author == rhs.author && lhs.text == rhs.text && lhs.category == rhs.category && lhs.likesCount == rhs.likesCount && lhs.commentsCount == rhs.commentsCount && lhs.repostCount == rhs.repostCount && lhs.rating == rhs.rating && lhs.authorName == rhs.authorName
     }
 }
 

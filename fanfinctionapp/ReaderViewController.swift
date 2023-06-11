@@ -1,17 +1,17 @@
 //
-//  AIViewController.swift
+//  ReaderViewController.swift
 //  fanfinctionapp
 //
-//  Created by mac on 28.05.2023.
+//  Created by mac on 06.06.2023.
 //  Copyright © 2023 mac. All rights reserved.
 //
 
 import UIKit
 
-class AIViewController: UIViewController {
+class ReaderViewController: UIViewController {
+    
+    var fanfic: Fanfic!
 
-    @IBOutlet weak var backButton: UIButton!
-    @IBOutlet weak var writtingTextButton: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
 

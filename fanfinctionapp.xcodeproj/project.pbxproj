@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		044118C62A2DEB68003E4ABE /* PublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044118C52A2DEB68003E4ABE /* PublishViewController.swift */; };
+		044118C82A2EA1AE003E4ABE /* ReaderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044118C72A2EA1AE003E4ABE /* ReaderViewController.swift */; };
+		044118D52A35255A003E4ABE /* AuthorProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044118D42A35255A003E4ABE /* AuthorProfileViewController.swift */; };
+		044118D72A35272E003E4ABE /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 044118D62A35272E003E4ABE /* CommentsViewController.swift */; };
 		0473250C2A1FD83D0073B156 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473250B2A1FD83D0073B156 /* AppDelegate.swift */; };
 		0473250E2A1FD83D0073B156 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0473250D2A1FD83D0073B156 /* ViewController.swift */; };
 		047325112A1FD83D0073B156 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0473250F2A1FD83D0073B156 /* Main.storyboard */; };
@@ -22,13 +26,16 @@
 		04C3D5BC2A21639600B9C62A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3D5BB2A21639600B9C62A /* AuthViewController.swift */; };
 		04C3D5C22A21663600B9C62A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3D5C12A21663600B9C62A /* TabBarViewController.swift */; };
 		04C3D5C42A2232BE00B9C62A /* CreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3D5C32A2232BE00B9C62A /* CreatingViewController.swift */; };
-		04C3D5C82A23D10200B9C62A /* AIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3D5C72A23D10200B9C62A /* AIViewController.swift */; };
 		04C3D5CA2A23D18200B9C62A /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3D5C92A23D18200B9C62A /* ProfileViewController.swift */; };
 		04D3EDBD2A214BB300139F68 /* RegViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04D3EDBC2A214BB200139F68 /* RegViewController.swift */; };
 		1418892D6DEDCA5BFBEC548B /* Pods_fanfinctionapp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D803052FBBEF103BE98156BF /* Pods_fanfinctionapp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		044118C52A2DEB68003E4ABE /* PublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PublishViewController.swift; sourceTree = "<group>"; };
+		044118C72A2EA1AE003E4ABE /* ReaderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReaderViewController.swift; sourceTree = "<group>"; };
+		044118D42A35255A003E4ABE /* AuthorProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorProfileViewController.swift; sourceTree = "<group>"; };
+		044118D62A35272E003E4ABE /* CommentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		047325082A1FD83D0073B156 /* fanfinctionapp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = fanfinctionapp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0473250B2A1FD83D0073B156 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0473250D2A1FD83D0073B156 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +53,6 @@
 		04C3D5BB2A21639600B9C62A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		04C3D5C12A21663600B9C62A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04C3D5C32A2232BE00B9C62A /* CreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingViewController.swift; sourceTree = "<group>"; };
-		04C3D5C72A23D10200B9C62A /* AIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIViewController.swift; sourceTree = "<group>"; };
 		04C3D5C92A23D18200B9C62A /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		04D3EDBC2A214BB200139F68 /* RegViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegViewController.swift; sourceTree = "<group>"; };
 		3AF3B607EFB718B73B903ABE /* Pods-fanfinctionapp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-fanfinctionapp.release.xcconfig"; path = "Target Support Files/Pods-fanfinctionapp/Pods-fanfinctionapp.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,13 +105,16 @@
 				04C3D5BB2A21639600B9C62A /* AuthViewController.swift */,
 				04C3D5C12A21663600B9C62A /* TabBarViewController.swift */,
 				04C3D5C32A2232BE00B9C62A /* CreatingViewController.swift */,
-				04C3D5C72A23D10200B9C62A /* AIViewController.swift */,
 				04C3D5C92A23D18200B9C62A /* ProfileViewController.swift */,
 				047C6E382A26B17000EBF3C0 /* FanficDetailViewController.swift */,
 				047C6E3C2A290E3200EBF3C0 /* FanficListViewController.swift */,
 				047C6E402A29D83100EBF3C0 /* EditViewController.swift */,
 				047C6E422A2B99A300EBF3C0 /* SearchByCategoryViewController.swift */,
 				047C6E442A2BB05F00EBF3C0 /* ShowSearchResultsViewController.swift */,
+				044118C52A2DEB68003E4ABE /* PublishViewController.swift */,
+				044118C72A2EA1AE003E4ABE /* ReaderViewController.swift */,
+				044118D42A35255A003E4ABE /* AuthorProfileViewController.swift */,
+				044118D62A35272E003E4ABE /* CommentsViewController.swift */,
 			);
 			path = fanfinctionapp;
 			sourceTree = "<group>";
@@ -246,15 +255,18 @@
 				0473250E2A1FD83D0073B156 /* ViewController.swift in Sources */,
 				047325142A1FD83D0073B156 /* fanfinctionapp.xcdatamodeld in Sources */,
 				04C3D5CA2A23D18200B9C62A /* ProfileViewController.swift in Sources */,
+				044118D72A35272E003E4ABE /* CommentsViewController.swift in Sources */,
 				047C6E3D2A290E3200EBF3C0 /* FanficListViewController.swift in Sources */,
 				04C3D5C42A2232BE00B9C62A /* CreatingViewController.swift in Sources */,
+				044118C62A2DEB68003E4ABE /* PublishViewController.swift in Sources */,
 				04C3D5BC2A21639600B9C62A /* AuthViewController.swift in Sources */,
-				04C3D5C82A23D10200B9C62A /* AIViewController.swift in Sources */,
+				044118C82A2EA1AE003E4ABE /* ReaderViewController.swift in Sources */,
 				047C6E392A26B17000EBF3C0 /* FanficDetailViewController.swift in Sources */,
 				047C6E412A29D83100EBF3C0 /* EditViewController.swift in Sources */,
 				0473250C2A1FD83D0073B156 /* AppDelegate.swift in Sources */,
 				04C3D5C22A21663600B9C62A /* TabBarViewController.swift in Sources */,
 				047C6E432A2B99A300EBF3C0 /* SearchByCategoryViewController.swift in Sources */,
+				044118D52A35255A003E4ABE /* AuthorProfileViewController.swift in Sources */,
 				047C6E452A2BB05F00EBF3C0 /* ShowSearchResultsViewController.swift in Sources */,
 				04D3EDBD2A214BB300139F68 /* RegViewController.swift in Sources */,
 			);
