@@ -50,10 +50,8 @@ class FanficDetailViewController: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
-    
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "ShowAuthorDetails", let authorVC = segue.destination as? AuthorProfileViewController, let authorID = sender as? String {
+        if segue.identifier == "ToAuthor", let authorVC = segue.destination as? AuthorViewController, let authorID = sender as? String {
             authorVC.authorID = authorID
         } else if segue.identifier == "ShowComments", let commentsVC = segue.destination as? CommentsViewController, let fanfic = sender as? Fanfic {
             commentsVC.fanfic = fanfic
