@@ -22,6 +22,9 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        avatarImageView.layer.cornerRadius = 50
+        avatarImageView.clipsToBounds = true
+        
         fanficCollectionView.dataSource = self
         fanficCollectionView.delegate = self
         fetchFanfics()
@@ -82,6 +85,12 @@ class ProfileViewController: UIViewController {
         
         present(imagePickerController, animated: true, completion: nil)
     }
+    
+    @IBAction func toSettings(_ sender: Any) {
+        performSegue(withIdentifier: "ToSettings", sender: nil)
+    }
+    
+    
 }
 
 extension ProfileViewController: UICollectionViewDataSource {
@@ -95,6 +104,9 @@ extension ProfileViewController: UICollectionViewDataSource {
         
         let fanfic = fanfics[indexPath.row]
         cell.configure(with: fanfic)
+        
+        cell.fanficImageView.layer.cornerRadius = 15
+        cell.fanficImageView.clipsToBounds = true
         
         return cell
     }

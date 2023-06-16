@@ -20,6 +20,14 @@ class RegViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+       
+        regButton.layer.cornerRadius = 14
+        regButton.clipsToBounds = true
+        
+        
+        nickNameField.layer.borderColor = UIColor(red: 0.20, green: 0.60, blue: 0.86, alpha: 1.0).cgColor
+        nickNameField.layer.cornerRadius = 10
+        
         emailField.delegate = self as? UITextFieldDelegate
         passwordField.delegate = self as? UITextFieldDelegate
         nickNameField.delegate = self as? UITextFieldDelegate

@@ -14,7 +14,7 @@ class FanficViewCell: UITableViewCell {
     
     @IBOutlet weak var titleFanfic: UILabel!
     @IBOutlet weak var imageFanfic: UIImageView!
-    
+
     var editHandler: (() -> Void)?
     
 //    func setEditHandler(_ handler: @escaping () -> Void) {
@@ -85,6 +85,8 @@ extension FanficListViewController: UITableViewDataSource {
 //        }
         
         // Load fanfic image
+        cell.imageFanfic.layer.cornerRadius = 15
+        cell.imageFanfic.clipsToBounds = true
         if let imageURLString = fanfic.imageURL {
             let imageURL = URL(string: imageURLString)!
             let task = URLSession.shared.dataTask(with: imageURL) { (data, response, error) in

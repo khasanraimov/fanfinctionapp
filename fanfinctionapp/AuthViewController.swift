@@ -23,6 +23,9 @@ class AuthViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        loginField.layer.cornerRadius = 14
+        loginField.clipsToBounds = true
+        
         emailOrNicknameField.delegate = self as? UITextFieldDelegate
         passwordField.delegate = self as? UITextFieldDelegate
         

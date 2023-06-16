@@ -13,7 +13,6 @@ import FirebaseStorage
 class PublishViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var segmentedControl: UISegmentedControl!
     
     var fanfics: [Fanfic] = []
     
@@ -38,30 +37,8 @@ class PublishViewController: UIViewController {
             }
             
             self.fanfics = fanfics
-            self.sortFanfics() // Сортировка фанфиков по умолчанию
-            
             self.collectionView.reloadData()
         })
-    }
-    
-    func sortFanfics() {
-        switch segmentedControl.selectedSegmentIndex {
-        case 0:
-            // Сортировка по количеству лайков
-            fanfics.sort { $0.likesCount > $1.likesCount }
-        case 1:
-            // Сортировка по рейтингу
-            fanfics.sort { $0.rating > $1.rating }
-        default:
-            // Сортировка по дате (от новых к старым)
-            fanfics.sort { $0.key ?? "" > $1.key ?? "" }
-        }
-    }
-    
-    @IBAction func segmentedControlChanged(_ sender: UISegmentedControl) {
-        sortFanfics() // Пересортировка фанфиков при изменении критерия сортировки
-        
-        collectionView.reloadData()
     }
 }
 
@@ -75,6 +52,9 @@ extension PublishViewController: UICollectionViewDataSource, UICollectionViewDel
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FanficCell", for: indexPath) as! FanficCollectionViewCell
         let fanfic = fanfics[indexPath.item]
         cell.titleLabel.text = fanfic.title
+        cell.imageView.layer.cornerRadius = 15
+        cell.imageView.clipsToBounds = true
+        
         if let imageURLString = fanfic.imageURL, let imageURL = URL(string: imageURLString) {
             let task = URLSession.shared.dataTask(with: imageURL) { (data, response, error) in
                 if let data = data {

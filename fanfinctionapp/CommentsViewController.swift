@@ -10,6 +10,7 @@ import UIKit
 
 class CommentsViewController: UIViewController {
     
+    @IBOutlet weak var tableView: UITableView!
     var fanfic: Fanfic?
 
     override func viewDidLoad() {
@@ -19,4 +20,13 @@ class CommentsViewController: UIViewController {
 
     }
 
+}
+class CommentsViewCell: UITableViewCell {
+    
+    @IBOutlet weak var imageUser: UIImageView!
+    @IBOutlet weak var nameUser: UILabel!
+    @IBOutlet weak var datECommented: UILabel!
+    @IBOutlet weak var textComment: UILabel!
+    
+    
 }

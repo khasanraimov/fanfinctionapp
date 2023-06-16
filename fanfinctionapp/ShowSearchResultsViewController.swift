@@ -48,6 +48,12 @@ class ShowSearchResultsViewController: UIViewController {
         }
     }
     
+    @IBAction func backButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    
+    
 }
 
 extension ShowSearchResultsViewController: UICollectionViewDelegate, UICollectionViewDataSource {
@@ -64,6 +70,8 @@ extension ShowSearchResultsViewController: UICollectionViewDelegate, UICollectio
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FanficCell", for: indexPath) as! FanficCell
         
         let fanfic = fanfics[indexPath.row]
+        cell.fanficImageView.layer.cornerRadius = 15
+        cell.fanficImageView.clipsToBounds = true
         
         cell.configure(with: fanfic)
         
@@ -77,19 +85,19 @@ extension ShowSearchResultsViewController: UICollectionViewDelegate, UICollectio
     
 }
 
-extension ShowSearchResultsViewController: UICollectionViewDelegateFlowLayout {
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width - 20) / 2
-        let height = width * 1.5
-        return CGSize(width: width, height: height)
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
-    }
-    
-}
+//extension ShowSearchResultsViewController: UICollectionViewDelegateFlowLayout {
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//        let width = (collectionView.frame.width - 20) / 2
+//        let height = width * 1.5
+//        return CGSize(width: width, height: height)
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+//        return UIEdgeInsets(top: 10, left: 5, bottom: 10, right: 5)
+//    }
+//
+//}
 
 class FanficCell: UICollectionViewCell {
     
