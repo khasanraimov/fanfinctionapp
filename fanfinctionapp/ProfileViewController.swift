@@ -24,7 +24,6 @@ class ProfileViewController: UIViewController {
         
         avatarImageView.layer.cornerRadius = 50
         avatarImageView.clipsToBounds = true
-        
         fanficCollectionView.dataSource = self
         fanficCollectionView.delegate = self
         fetchFanfics()

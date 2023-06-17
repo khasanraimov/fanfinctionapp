@@ -15,6 +15,8 @@ class FanficDetailViewController: UIViewController {
     @IBOutlet weak var fanficDescriptionTextView: UILabel!
     @IBOutlet weak var authorButton: UIButton!
     @IBOutlet weak var datePublish: UILabel!
+    @IBOutlet weak var toReading: UIButton!
+    
     
     var fanfic: Fanfic!
     
@@ -23,6 +25,9 @@ class FanficDetailViewController: UIViewController {
         
         fanficImageView.layer.cornerRadius = 50
         fanficImageView.clipsToBounds = true
+        toReading.layer.cornerRadius = 15
+        toReading.clipsToBounds = true
+        
         
         fanficTitleLabel.text = fanfic.title
         fanficDescriptionTextView.text = fanfic.description
@@ -40,7 +45,11 @@ class FanficDetailViewController: UIViewController {
             }
             task.resume()
         }
+        let dateFormatter = DateFormatter()
         
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        datePublish.text = "Опубликовано: \(dateFormatter.string(from: fanfic.publicationDate))"
+
 }
     
     @IBAction func authorButtonTapped(_ sender: Any) {
@@ -52,8 +61,8 @@ class FanficDetailViewController: UIViewController {
     }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToAuthor", let authorVC = segue.destination as? AuthorViewController, let authorID = sender as? String {
-            authorVC.authorID = authorID
-        } else if segue.identifier == "ShowComments", let commentsVC = segue.destination as? CommentsViewController, let fanfic = sender as? Fanfic {
+            authorVC.authorID = fanfic.author
+        } else if segue.identifier == "ToComments", let commentsVC = segue.destination as? CommentsViewController, let fanfic = sender as? Fanfic {
             commentsVC.fanfic = fanfic
         }
     }

@@ -343,7 +343,7 @@
                         <viewLayoutGuide key="safeArea" id="tWb-zu-Wbi"/>
                     </view>
                     <connections>
-                        <segue destination="7jg-iJ-yeM" kind="show" identifier="ToCommit" id="rUx-fh-Smd"/>
+                        <segue destination="7jg-iJ-yeM" kind="show" identifier="ToComments" id="rUx-fh-Smd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kcc-nb-Oxo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -368,7 +368,7 @@
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FanficCollectionViewCell" id="GIO-oR-IWm" customClass="FanficCollViewCell" customModule="fanfinctionapp" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="authorFanficsCell" id="GIO-oR-IWm" customClass="AuthorFanficsCollectionCell" customModule="fanfinctionapp" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="92" height="83"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
@@ -401,8 +401,8 @@
                                             <constraint firstAttribute="trailing" secondItem="ti6-6H-cBq" secondAttribute="trailing" id="yhE-uG-FU4"/>
                                         </constraints>
                                         <connections>
-                                            <outlet property="imageView" destination="26U-Jf-4lb" id="Bjd-eL-FYR"/>
-                                            <outlet property="titleLabel" destination="ti6-6H-cBq" id="li6-xX-czu"/>
+                                            <outlet property="imageFanfic" destination="26U-Jf-4lb" id="ZCf-wp-ibs"/>
+                                            <outlet property="nameFanfic" destination="ti6-6H-cBq" id="fpi-zj-pxv"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -432,7 +432,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                 <state key="normal" title="Подписаться"/>
                                 <connections>
-                                    <action selector="followButtonTaped:" destination="Nu7-6C-jMe" eventType="touchUpInside" id="goz-9y-IEt"/>
+                                    <action selector="followButtonTapped:" destination="Nu7-6C-jMe" eventType="touchUpInside" id="M3A-fS-lwL"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lEL-4u-iJd">
@@ -520,8 +520,8 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HvX-W2-wf2">
-                                <rect key="frame" x="16" y="632.5" width="342" height="14.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <rect key="frame" x="16" y="635" width="342" height="12"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -565,6 +565,7 @@
                         <outlet property="fanficDescriptionTextView" destination="BcE-2Z-DxK" id="pA0-c7-Din"/>
                         <outlet property="fanficImageView" destination="PlN-nO-6IV" id="bUP-Xh-ADH"/>
                         <outlet property="fanficTitleLabel" destination="OkE-vP-jhF" id="SZV-mJ-Dah"/>
+                        <outlet property="toReading" destination="v3a-H1-kyA" id="SUW-fw-zka"/>
                         <segue destination="Nu7-6C-jMe" kind="show" identifier="ShowAuthorDetails" id="KdS-ND-o1U"/>
                     </connections>
                 </viewController>
@@ -1482,7 +1483,6 @@ AAAAAAAAAAAAABPkA
         <image name="settings" width="20" height="20"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="KdS-ND-o1U"/>
         <segue reference="zlA-GB-1BX"/>
         <segue reference="scc-h6-nkX"/>
     </inferredMetricsTieBreakers>

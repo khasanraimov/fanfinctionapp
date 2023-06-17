@@ -25,6 +25,7 @@
 		04AABC822A3BA56C00E28084 /* Fanfic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AABC812A3BA56C00E28084 /* Fanfic.swift */; };
 		04AABC842A3BAFDA00E28084 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AABC832A3BAFDA00E28084 /* SettingsViewController.swift */; };
 		04AB802E2A3D24F9001862B7 /* AuthorViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB802D2A3D24F9001862B7 /* AuthorViewController.swift */; };
+		04AB80302A3DC9D4001862B7 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04AB802F2A3DC9D4001862B7 /* User.swift */; };
 		04C3D5BC2A21639600B9C62A /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3D5BB2A21639600B9C62A /* AuthViewController.swift */; };
 		04C3D5C22A21663600B9C62A /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3D5C12A21663600B9C62A /* TabBarViewController.swift */; };
 		04C3D5C42A2232BE00B9C62A /* CreatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04C3D5C32A2232BE00B9C62A /* CreatingViewController.swift */; };
@@ -54,6 +55,7 @@
 		04AABC812A3BA56C00E28084 /* Fanfic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fanfic.swift; sourceTree = "<group>"; };
 		04AABC832A3BAFDA00E28084 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		04AB802D2A3D24F9001862B7 /* AuthorViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorViewController.swift; sourceTree = "<group>"; };
+		04AB802F2A3DC9D4001862B7 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		04C3D5BB2A21639600B9C62A /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		04C3D5C12A21663600B9C62A /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
 		04C3D5C32A2232BE00B9C62A /* CreatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatingViewController.swift; sourceTree = "<group>"; };
@@ -121,6 +123,7 @@
 				04AABC812A3BA56C00E28084 /* Fanfic.swift */,
 				04AABC832A3BAFDA00E28084 /* SettingsViewController.swift */,
 				04AB802D2A3D24F9001862B7 /* AuthorViewController.swift */,
+				04AB802F2A3DC9D4001862B7 /* User.swift */,
 			);
 			path = fanfinctionapp;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				04AABC842A3BAFDA00E28084 /* SettingsViewController.swift in Sources */,
 				04C3D5C42A2232BE00B9C62A /* CreatingViewController.swift in Sources */,
 				044118C62A2DEB68003E4ABE /* PublishViewController.swift in Sources */,
+				04AB80302A3DC9D4001862B7 /* User.swift in Sources */,
 				04C3D5BC2A21639600B9C62A /* AuthViewController.swift in Sources */,
 				044118C82A2EA1AE003E4ABE /* ReaderViewController.swift in Sources */,
 				047C6E392A26B17000EBF3C0 /* FanficDetailViewController.swift in Sources */,

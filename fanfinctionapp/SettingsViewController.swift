@@ -260,3 +260,5 @@ class SettingsViewController: UIViewController {
         return emailPredicate.evaluate(with: email)
     }
 }
+
+
