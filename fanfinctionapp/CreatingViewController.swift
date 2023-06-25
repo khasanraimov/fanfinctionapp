@@ -13,6 +13,8 @@ class CreatingViewController: UIViewController {
     var categories = ["Фантастика", "Фэнтези", "Романтика", "Драма"]
     var fanficCategory: String?
     var fanfic: Fanfic?
+    var likeCount = 0
+
     override func viewDidLoad() {
         super.viewDidLoad()
         imageFanfic.layer.cornerRadius = 20
@@ -28,7 +30,7 @@ class CreatingViewController: UIViewController {
         if let fanfic = fanfic {
             fanficTitleTextField.text = fanfic.title
             descriptionFanfic.text = fanfic.description
-            contentFanfic.text = fanfic.text
+            contentFanfic.text = fanfic.content
             fanficCategory = fanfic.category
             updateCategoryButton()
             fanficImageURL = fanfic.imageURL
@@ -130,7 +132,7 @@ class CreatingViewController: UIViewController {
                 fanficRef.child("authorName").setValue(nickname) // Сохраняем nickname пользователя
                 fanficRef.child("content").setValue(self.contentFanfic.text)
                 fanficRef.child("category").setValue(fanficCategory)
-                fanficRef.child("likeCount").setValue(0)
+//                fanficRef.child("likeCount").setValue(0)
                 
                 let storageRef = Storage.storage(url: "gs://fanfiction-4f149.appspot.com").reference().child("fanfic_images/\(fanficRef.key!)")
                 

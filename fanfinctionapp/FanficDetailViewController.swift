@@ -16,7 +16,10 @@ class FanficDetailViewController: UIViewController {
     @IBOutlet weak var authorButton: UIButton!
     @IBOutlet weak var datePublish: UILabel!
     @IBOutlet weak var toReading: UIButton!
-    
+    @IBOutlet weak var likeButton: UIButton!
+    @IBOutlet weak var likeButtonCount: UILabel!
+    @IBOutlet weak var commentButton: UIButton!
+    @IBOutlet weak var commentCount: UILabel!
     
     var fanfic: Fanfic!
     
@@ -27,7 +30,6 @@ class FanficDetailViewController: UIViewController {
         fanficImageView.clipsToBounds = true
         toReading.layer.cornerRadius = 15
         toReading.clipsToBounds = true
-        
         
         fanficTitleLabel.text = fanfic.title
         fanficDescriptionTextView.text = fanfic.description
@@ -49,7 +51,7 @@ class FanficDetailViewController: UIViewController {
         
         dateFormatter.dateFormat = "dd.MM.yyyy"
         datePublish.text = "Опубликовано: \(dateFormatter.string(from: fanfic.publicationDate))"
-
+        likeButtonCount.text = "\(fanfic.likeCount)"
 }
     
     @IBAction func authorButtonTapped(_ sender: Any) {
@@ -59,12 +61,31 @@ class FanficDetailViewController: UIViewController {
     @IBAction func backButton(_ sender: Any) {
         dismiss(animated: true, completion: nil)
     }
+    
+    @IBAction func toReadingButtonTapped(_ sender: Any) {
+        performSegue(withIdentifier: "ToRead", sender: fanfic)
+
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "ToAuthor", let authorVC = segue.destination as? AuthorViewController, let authorID = sender as? String {
             authorVC.authorID = fanfic.author
-        } else if segue.identifier == "ToComments", let commentsVC = segue.destination as? CommentsViewController, let fanfic = sender as? Fanfic {
-            commentsVC.fanfic = fanfic
+        } else if segue.identifier == "ToRead", let storyVC = segue.destination as? ReaderViewController, let fanfic = sender as? Fanfic {
+            storyVC.fanfic = fanfic
         }
     }
     
+    
+    @IBAction func likeButtonTapped(_ sender: Any) {
+       
+    }
+    
+    func showAlert(withTitle title: String, message: String) {
+        DispatchQueue.main.async {
+            let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "ОК", style: .default)
+            alert.addAction(okAction)
+            self.present(alert, animated: true)
+        }
+    }
 }

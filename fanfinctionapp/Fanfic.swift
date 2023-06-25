@@ -16,9 +16,9 @@ struct Fanfic: Decodable {
     var description: String?
     var imageURL: String?
     var author: String?
-    var text: String?
+    var content: String?
     var category: String?
-    var likesCount: Int
+    var likeCount: Int
     var commentsCount: Int
     var repostCount: Int
     var rating: Double
@@ -33,9 +33,9 @@ struct Fanfic: Decodable {
         description = data["description"] as? String
         imageURL = data["imageURL"] as? String
         author = data["author"] as? String
-        text = data["text"] as? String
+        content = data["content"] as? String
         category = data["category"] as? String
-        likesCount = data["likes_count"] as? Int ?? 0
+        likeCount = data["likeCount"] as? Int ?? 0
         commentsCount = data["comments_count"] as? Int ?? 0
         repostCount = data["repost_count"] as? Int ?? 0
         rating = data["rating"] as? Double ?? 0.0
@@ -56,9 +56,9 @@ struct Fanfic: Decodable {
         case description
         case imageURL = "image_url"
         case author
-        case text
+        case content
         case category
-        case likesCount = "likes_count"
+        case likeCount = "likeCount"
         case commentsCount = "comments_count"
         case repostCount = "repost_count"
         case rating
@@ -73,9 +73,9 @@ struct Fanfic: Decodable {
         description = dict["description"] as? String
         imageURL = dict["image_url"] as? String
         author = dict["author"] as? String
-        text = dict["text"] as? String
+        content = dict["content"] as? String
         category = dict["category"] as? String
-        likesCount = dict["likes_count"] as? Int ?? 0
+        likeCount = dict["likeCount"] as? Int ?? 0
         commentsCount = dict["comments_count"] as? Int ?? 0
         repostCount = dict["repost_count"] as? Int ?? 0
         rating = dict["rating"] as? Double ?? 0.0
@@ -97,9 +97,9 @@ struct Fanfic: Decodable {
         description = try container.decodeIfPresent(String.self, forKey: .description)
         imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
         author = try container.decodeIfPresent(String.self, forKey: .author)
-        text = try container.decodeIfPresent(String.self, forKey: .text)
+        content = try container.decodeIfPresent(String.self, forKey: .content)
         category = try container.decodeIfPresent(String.self, forKey: .category)
-        likesCount = try container.decode(Int.self, forKey: .likesCount)
+        likeCount = try container.decode(Int.self, forKey: .likeCount)
         commentsCount = try container.decode(Int.self, forKey: .commentsCount)
         repostCount = try container.decode(Int.self, forKey: .repostCount)
         rating = try container.decode(Double.self, forKey: .rating)
@@ -115,9 +115,9 @@ struct Fanfic: Decodable {
         try container.encodeIfPresent(description, forKey: .description)
         try container.encodeIfPresent(imageURL, forKey: .imageURL)
         try container.encodeIfPresent(author, forKey: .author)
-        try container.encodeIfPresent(text, forKey: .text)
+        try container.encodeIfPresent(content, forKey: .content)
         try container.encodeIfPresent(category, forKey: .category)
-        try container.encode(likesCount, forKey: .likesCount)
+        try container.encode(likeCount, forKey: .likeCount)
         try container.encode(commentsCount, forKey: .commentsCount)
         try container.encode(repostCount, forKey: .repostCount)
         try container.encode(rating, forKey: .rating)
@@ -134,9 +134,9 @@ struct Fanfic: Decodable {
         description = fanficDict["description"] as? String
         imageURL = fanficDict["imageURL"] as? String
         author = fanficDict["author"] as? String
-        text = fanficDict["text"] as? String
+        content = fanficDict["content"] as? String
         category = fanficDict["category"] as? String
-        likesCount = fanficDict["likes_count"] as? Int ?? 0
+        likeCount = fanficDict["likeCount"] as? Int ?? 0
         commentsCount = fanficDict["comments_count"] as? Int ?? 0
         repostCount = fanficDict["repost_count"] as? Int ?? 0
         rating = fanficDict["rating"] as? Double ?? 0.0
@@ -155,20 +155,20 @@ struct Fanfic: Decodable {
     mutating func like(byUser userID: String) {
         if !likedBy.contains(userID) {
             likedBy.append(userID)
-            likesCount += 1
+            likeCount += 1
         }
     }
     
     mutating func unlike(byUser userID: String) {
         if let index = likedBy.firstIndex(of: userID) {
             likedBy.remove(at: index)
-            likesCount -= 1
+            likeCount -= 1
         }
     }
 }
 extension Fanfic: Equatable {
     
     static func == (lhs: Fanfic, rhs: Fanfic) -> Bool {
-        return lhs.title == rhs.title && lhs.description == rhs.description && lhs.imageURL == rhs.imageURL && lhs.author == rhs.author && lhs.text == rhs.text && lhs.category == rhs.category && lhs.likesCount == rhs.likesCount && lhs.commentsCount == rhs.commentsCount && lhs.repostCount == rhs.repostCount && lhs.rating == rhs.rating && lhs.authorName == rhs.authorName
+        return lhs.title == rhs.title && lhs.description == rhs.description && lhs.imageURL == rhs.imageURL && lhs.author == rhs.author && lhs.content == rhs.content && lhs.category == rhs.category && lhs.likeCount == rhs.likeCount && lhs.commentsCount == rhs.commentsCount && lhs.repostCount == rhs.repostCount && lhs.rating == rhs.rating && lhs.authorName == rhs.authorName
     }
 }
